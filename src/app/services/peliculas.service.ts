@@ -27,11 +27,12 @@ export class PeliculasService {
   getCartelera() {
     const desde = new Date();
     const hasta = new Date();
+    desde.setDate(hasta.getDate() - 17);
     hasta.setDate(hasta.getDate() + 7);
-    const desdeStr = `${ desde.getFullYear() }-${ desde.getMonth() }-${ desde.getDay }`;
-    const hastaStr = `${ hasta.getFullYear() }-${ hasta.getMonth() }-${ hasta.getDay }`;
-    const url = `${ this.urlMoviedb }/discover/movie?primary_release_date.gte=${ desdeStr }-15&primary_release_date.lte=${ hastaStr }
-    &api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    const desdeStr = `${ desde.getFullYear() }-${ ('0' + (desde.getMonth() + 1)).slice(-2) }-${ ('0' + desde.getDate()).slice(-2) }`;
+    const hastaStr = `${ hasta.getFullYear() }-${ ('0' + (hasta.getMonth() + 1)).slice(-2) }-${ ('0' + hasta.getDate()).slice(-2) }`;
+    console.log(`${desdeStr} - ${ hastaStr }`);
+    const url = `${ this.urlMoviedb }/discover/movie?primary_release_date.gte=${ desdeStr }&primary_release_date.lte=${ hastaStr }&api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
     return this.http.jsonp(url, 'JSONP_CALLBACK');
   }
 }

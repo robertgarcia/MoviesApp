@@ -9,7 +9,5 @@ import { PeliculasService } from './services/peliculas.service';
 export class AppComponent {
   title = 'moviesApp';
 
-  constructor(public service: PeliculasService) {
-    this.service.getPopulares().toPromise().then( data => console.log(data) ).catch( err => console.log(err));
-  }
+  constructor(public service: PeliculasService) {}
 }
