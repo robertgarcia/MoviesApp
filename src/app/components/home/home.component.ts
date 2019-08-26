@@ -14,9 +14,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private service: PeliculasService
   ) {
-    this.service.getCartelera().subscribe( (res: any) => this.cartelera = res.results );
-    this.service.getPopulares().subscribe( (res: any) => this.populares = res.results );
-    this.service.getPopularesKids().subscribe( (res: any) => this.popularesKids = res.results );
+    this.service.getCartelera().subscribe( (res: any) => this.cartelera = res );
+    this.service.getPopulares().subscribe( (res: any) => this.populares = res );
+    this.service.getPopularesKids().subscribe( (res: any) => this.popularesKids = res );
   }
 
   ngOnInit() {
