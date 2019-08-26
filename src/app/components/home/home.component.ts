@@ -8,10 +8,14 @@ import { PeliculasService } from '../../services/peliculas.service';
 })
 export class HomeComponent implements OnInit {
 
+  cartelera: any;
   constructor(
     private service: PeliculasService
   ) {
-    this.service.getPopulares().subscribe( res => console.log(res) );
+    this.service.getPopulares().subscribe( (res: any) => {
+      console.log(res);
+      this.cartelera = res.results;
+    });
   }
 
   ngOnInit() {

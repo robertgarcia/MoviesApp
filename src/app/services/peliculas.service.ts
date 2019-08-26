@@ -18,6 +18,12 @@ export class PeliculasService {
     return this.http.jsonp(url, 'JSONP_CALLBACK');
   }
 
+  getPopularesKids() {
+    const url = `${ this.urlMoviedb }/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc
+    &api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    return this.http.jsonp(url, 'JSONP_CALLBACK');
+  }
+
   getCartelera() {
     const desde = new Date();
     const hasta = new Date();
