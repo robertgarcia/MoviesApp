@@ -12,7 +12,7 @@ export class PeliculaImagenPipe implements PipeTransform {
       if (pelicula.poster_path) {
         return url + pelicula.poster_path;
       } else {
-        return 'src/assets/img/No_image_available.svg';
+        return 'https://www.cicar.com/html/thumbnails/noimage.png';
       }
     }
 
@@ -22,7 +22,7 @@ export class PeliculaImagenPipe implements PipeTransform {
       if (pelicula.poster_path) {
         return url + pelicula.poster_path;
       } else {
-        return 'src/assets/img/No_image_available.svg';
+        return 'https://www.cicar.com/html/thumbnails/noimage.png';
       }
     }
   }

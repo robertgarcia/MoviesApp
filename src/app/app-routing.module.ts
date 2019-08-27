@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'buscar', component: BuscarComponent },
   { path: 'buscar/:texto', component: BuscarComponent },
   { path: 'pelicula/:id/:pag', component: MovieComponent },
+  { path: 'pelicula/:id/:pag/:busqueda', component: MovieComponent },
+
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
