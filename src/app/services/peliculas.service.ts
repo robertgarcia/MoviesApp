@@ -17,7 +17,7 @@ export class PeliculasService {
   ) { }
 
   getPopulares() {
-    const url = `${ this.urlMoviedb }/discover/movie?sort_by=popularity.desc&api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    const url = `${ this.urlMoviedb }/discover/movie?sort_by=popularity.desc&api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
     return this.http.jsonp(url, 'JSONP_CALLBACK').pipe(map((res: any) => {
       return res.results;
     }));
@@ -25,7 +25,7 @@ export class PeliculasService {
 
   getPopularesKids() {
     const url = `${ this.urlMoviedb }/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc
-    &api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    &api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
     return this.http.jsonp(url, 'JSONP_CALLBACK').pipe(map((res: any) => {
       return res.results;
     }));
@@ -34,21 +34,26 @@ export class PeliculasService {
   getCartelera() {
     const desde = new Date();
     const hasta = new Date();
-    desde.setDate(hasta.getDate() - 17);
+    desde.setDate(hasta.getDate());
     hasta.setDate(hasta.getDate() + 7);
     const desdeStr = `${ desde.getFullYear() }-${ ('0' + (desde.getMonth() + 1)).slice(-2) }-${ ('0' + desde.getDate()).slice(-2) }`;
     const hastaStr = `${ hasta.getFullYear() }-${ ('0' + (hasta.getMonth() + 1)).slice(-2) }-${ ('0' + hasta.getDate()).slice(-2) }`;
-    const url = `${ this.urlMoviedb }/discover/movie?primary_release_date.gte=${ desdeStr }&primary_release_date.lte=${ hastaStr }&api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    const url = `${ this.urlMoviedb }/discover/movie?primary_release_date.gte=${ desdeStr }&primary_release_date.lte=${ hastaStr }&api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
     return this.http.jsonp(url, 'JSONP_CALLBACK').pipe(map((res: any) => {
       return res.results;
     }));
   }
 
   buscarPeliculas(texto: string) {
-    const url = `${ this.urlMoviedb }/search/movie?query=${ texto }&sort_by=popularity.desc&api_key${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    const url = `${ this.urlMoviedb }/search/movie?query=${ texto }&sort_by=popularity.desc&api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
     return this.http.jsonp(url, 'JSONP_CALLBACK').pipe(map((res: any) => {
       this.peliculas = res.results;
       return res.results;
     }));
+  }
+
+  getPelicula(id: string) {
+    const url = `${ this.urlMoviedb }/movie/${ id }?api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+    return this.http.jsonp(url, 'JSONP_CALLBACK');
   }
 }

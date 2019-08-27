@@ -8,7 +8,8 @@ import { MovieComponent } from './components/movie/movie.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'buscar', component: BuscarComponent },
-  { path: 'pelicula', component: MovieComponent },
+  { path: 'buscar/:texto', component: BuscarComponent },
+  { path: 'pelicula/:id/:pag', component: MovieComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
