@@ -5,7 +5,7 @@ Aplicación web desarrollada en Angular 8, utiliza el API de [The Movie Database
 ## The Movie DB
 
 - Ingresan a [The Movie DB](https://www.themoviedb.org) y se crean una cuenta.
-- En Editar Pefil -> API les aparecera las llaves para conectarse mediante JSONP.
+- En Editar Perfil -> API les aparecera las llaves para conectarse mediante JSONP.
 
 ## Angular
 
